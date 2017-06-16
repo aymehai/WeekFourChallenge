@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 public class RoboResume {
 
 	private NameAndEmail nameNEmail;
@@ -13,19 +14,17 @@ public class RoboResume {
 	}
 
 	// Name And Email Methods
-	public String getRoboResumeNameNEmail() {
-		nameNEmail.getNameAndEmail();
-		return "";
+	public ArrayList<String> getRoboResumeNameNEmail() {
+		return nameNEmail.getNameAndEmail();
 	}
 
-	public String setRoboResumeNameNEmail() {
-		nameNEmail.setNameAndEmail();
+	public String setRoboResumeNameNEmail(String inputName, String inputEmail) {
+		nameNEmail.setNameAndEmail(inputName, inputEmail);
 		return "";
 	}
 
 	// Education Methods
-	public String getRoboResumeEducation() {
-
+	public ArrayList<String> getRoboResumeEducation() {
 		return edu.getEducation();
 	}
 
@@ -35,7 +34,7 @@ public class RoboResume {
 
 	// Work Methods
 
-	public String getRoboResumeWork() {
+	public ArrayList<String> getRoboResumeWork() {
 		return work.getWork();
 	}
 
@@ -45,7 +44,7 @@ public class RoboResume {
 
 	// Skills Methods
 
-	public String getRoboResumeSkills() {
+	public ArrayList<String> getRoboResumeSkills() {
 		return skills.getSkills();
 	}
 

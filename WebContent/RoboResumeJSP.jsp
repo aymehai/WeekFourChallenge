@@ -1,28 +1,36 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
-<h1>MY RESUME</h1>
-<p>=======================================</p>
-<h3>Education</h3>
-<p>${myEducation}</p>
-
-<h3>Work</h3>
-<p>${myWork}</p>
-
-<h3>Skills</h3>
-<c:forEach items="${mySkills}" var="Skills">
-
-		${Skills.skills_name}<br />
-
-
-</c:forEach>
+<title>Resume</title>
+<link href="vendor/bootstrap/css/bootstrap.css" rel="stylesheet">
 </head>
 <body>
-
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-12 text-center">
+				<h1>MY RESUME</h1>
+				<p>=======================================</p>
+				<div class="form-control">
+					<h3>Name & Email</h3>
+					<p>${myNameAndEmail}</p>
+				</div>
+				<div class="form-control">
+					<h3>Education</h3>
+					<p>${myEducation}</p>
+				</div>
+				<div class="form-control">
+					<h3>Work</h3>
+					<p>${myWork}</p>
+				</div>
+				<div class="form-control">
+					<h3>Skills</h3>
+					<p>${mySkills}</p>
+				</div>
+			</div>
+		</div>
+	</div>
 </body>
 </html>

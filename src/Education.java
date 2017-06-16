@@ -1,9 +1,10 @@
 import java.sql.*;
+import java.util.ArrayList;
 
 public class Education {
 
-	private String education_name = "";
-	public String message = "";
+	private String education_name = null;
+	public ArrayList<String> message = new ArrayList<String>();
 	private int i = 1;
 
 	public void setEducation(String inputEducation) {
@@ -27,7 +28,7 @@ public class Education {
 		}
 	}
 
-	public String getEducation() {
+	public ArrayList<String> getEducation() {
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/Resume?useSSL=false", "root",
@@ -37,7 +38,7 @@ public class Education {
 			Statement stmt = con.createStatement();
 			ResultSet rs = stmt.executeQuery(query);
 			while (rs.next()) {
-				message = message + "\n" + rs.getString(2);
+				message.add(rs.getString(2));
 
 			}
 			con.close();

@@ -1,30 +1,25 @@
 import java.sql.*;
-import java.util.Scanner;
+import java.util.ArrayList;
 
 public class NameAndEmail {
 
 	private String name;
 	private String email;
-	private int id;
+	public ArrayList<String> message = new ArrayList<String>();
 
-	public void setNameAndEmail() {
+	public void setNameAndEmail(String inputName, String inputEmail) {
 		try {
-			Scanner keyboard = new Scanner(System.in);
 			Class.forName("com.mysql.jdbc.Driver");
 			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/Resume?useSSL=false", "root", "password");
 			
 			PreparedStatement prepst;
 
-			String query = ("INSERT INTO NameAndEmail (id, name, email) Values (?,?,?)");
+			String query = ("INSERT INTO NameAndEmail (name, email) Values (?,?)");
 			prepst = con.prepareStatement(query);
-			prepst.setInt(1, id);
-			System.out.println("Please enter your name.");
-			name = keyboard.nextLine();
-			prepst.setString(2, name);
-			System.out.println("Please enter your email.");
-			email = keyboard.nextLine();
-			prepst.setString(3, email);
-			
+			name = inputName;
+			email = inputEmail;
+			prepst.setString(1, name);
+			prepst.setString(2, email);
 			prepst.executeUpdate();
 
 		} catch (Exception ex) {
@@ -32,24 +27,24 @@ public class NameAndEmail {
 		}
 	}
 
-	public void getNameAndEmail() {
+	public ArrayList<String> getNameAndEmail() {
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/Resume?useSSL=false", "root", "password");
-			PreparedStatement prepst;
 
 			String query = ("SELECT * FROM NameAndEmail");
 			Statement stmt = con.createStatement();
 			ResultSet rs = stmt.executeQuery(query);
 			while (rs.next()) {
-				System.out.println(rs.getString(2));
-				System.out.println(rs.getString(3));
+				message.add(rs.getString(2));
+				message.add(rs.getString(3));
 			}
 			con.close();
 
 		} catch (Exception ex) {
 			System.out.println(ex);
 		}
+		return message;
 	}
 
 }
